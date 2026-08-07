@@ -12,5 +12,4 @@ use Drupal\user\EntityOwnerInterface;
  * Provides an interface defining a voting question entity type.
  */
 interface VotingQuestionInterface extends ContentEntityInterface, EntityOwnerInterface, EntityChangedInterface {
-
 }

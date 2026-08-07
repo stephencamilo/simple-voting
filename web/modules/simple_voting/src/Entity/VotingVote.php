@@ -17,28 +17,28 @@ use Drupal\views\EntityViewsData;
  * Defines the voting vote entity class.
  */
 #[ContentEntityType(
-  id: 'voting_vote',
-  label: new TranslatableMarkup('Voting vote'),
-  label_collection: new TranslatableMarkup('Voting votes'),
-  label_singular: new TranslatableMarkup('voting vote'),
-  label_plural: new TranslatableMarkup('voting votes'),
-  entity_keys: [
-    'id' => 'id',
-    'uuid' => 'uuid',
-  ],
-  handlers: [
-    'list_builder' => VotingVoteListBuilder::class,
-    'views_data' => EntityViewsData::class,
-  ],
-  admin_permission: 'administer voting',
-  base_table: 'voting_vote',
-  constraints: [
-    'UniqueVote' => [],
-  ],
-  label_count: [
-    'singular' => '@count voting vote',
-    'plural' => '@count voting votes',
-  ],
+    id: 'voting_vote',
+    label: new TranslatableMarkup('Voting vote'),
+    label_collection: new TranslatableMarkup('Voting votes'),
+    label_singular: new TranslatableMarkup('voting vote'),
+    label_plural: new TranslatableMarkup('voting votes'),
+    entity_keys: [
+      'id' => 'id',
+      'uuid' => 'uuid',
+    ],
+    handlers: [
+      'list_builder' => VotingVoteListBuilder::class,
+      'views_data' => EntityViewsData::class,
+    ],
+    admin_permission: 'administer voting',
+    base_table: 'voting_vote',
+    constraints: [
+      'UniqueVote' => [],
+    ],
+    label_count: [
+      'singular' => '@count voting vote',
+      'plural' => '@count voting votes',
+    ],
 )]
 class VotingVote extends ContentEntityBase implements VotingVoteInterface {
 
@@ -75,4 +75,5 @@ class VotingVote extends ContentEntityBase implements VotingVoteInterface {
 
     return $fields;
   }
+
 }

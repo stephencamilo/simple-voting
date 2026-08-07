@@ -24,48 +24,47 @@ use Drupal\views\EntityViewsData;
  * Defines the voting question entity class.
  */
 #[ContentEntityType(
-  id: 'voting_question',
-  label: new TranslatableMarkup('Voting question'),
-  label_collection: new TranslatableMarkup('Voting questions'),
-  label_singular: new TranslatableMarkup('voting question'),
-  label_plural: new TranslatableMarkup('voting questions'),
-  entity_keys: [
-    'id' => 'id',
-    'label' => 'label',
-    'owner' => 'uid',
-    'published' => 'status',
-    'uuid' => 'uuid',
-  ],
-  handlers: [
-    'list_builder' => VotingQuestionListBuilder::class,
-    'views_data' => EntityViewsData::class,
-    'form' => [
-      'add' => VotingQuestionForm::class,
-      'edit' => VotingQuestionForm::class,
-      'delete' => ContentEntityDeleteForm::class,
-      'delete-multiple-confirm' => DeleteMultipleForm::class,
+    id: 'voting_question',
+    label: new TranslatableMarkup('Voting question'),
+    label_collection: new TranslatableMarkup('Voting questions'),
+    label_singular: new TranslatableMarkup('voting question'),
+    label_plural: new TranslatableMarkup('voting questions'),
+    entity_keys: [
+      'id' => 'id',
+      'label' => 'label',
+      'owner' => 'uid',
+      'published' => 'status',
+      'uuid' => 'uuid',
     ],
-    'route_provider' => [
-      'html' => AdminHtmlRouteProvider::class,
+    handlers: [
+      'list_builder' => VotingQuestionListBuilder::class,
+      'views_data' => EntityViewsData::class,
+      'form' => [
+        'add' => VotingQuestionForm::class,
+        'edit' => VotingQuestionForm::class,
+        'delete' => ContentEntityDeleteForm::class,
+        'delete-multiple-confirm' => DeleteMultipleForm::class,
+      ],
+      'route_provider' => [
+        'html' => AdminHtmlRouteProvider::class,
+      ],
     ],
-  ],
-  links: [
-    'collection' => '/admin/content/voting-question',
-    'add-form' => '/voting-question/add',
-    'canonical' => '/voting-question/{voting_question}',
-    'edit-form' => '/voting-question/{voting_question}/edit',
-    'delete-form' => '/voting-question/{voting_question}/delete',
-    'delete-multiple-form' => '/admin/content/voting-question/delete-multiple',
-  ],
-  admin_permission: 'administer voting',
-  base_table: 'voting_question',
-  label_count: [
-    'singular' => '@count voting questions',
-    'plural' => '@count voting questions',
-  ],
+    links: [
+      'collection' => '/admin/content/voting-question',
+      'add-form' => '/voting-question/add',
+      'canonical' => '/voting-question/{voting_question}',
+      'edit-form' => '/voting-question/{voting_question}/edit',
+      'delete-form' => '/voting-question/{voting_question}/delete',
+      'delete-multiple-form' => '/admin/content/voting-question/delete-multiple',
+    ],
+    admin_permission: 'administer voting',
+    base_table: 'voting_question',
+    label_count: [
+      'singular' => '@count voting questions',
+      'plural' => '@count voting questions',
+    ],
 )]
 class VotingQuestion extends ContentEntityBase implements VotingQuestionInterface {
-
   use EntityChangedTrait;
   use EntityOwnerTrait;
 
@@ -208,4 +207,5 @@ class VotingQuestion extends ContentEntityBase implements VotingQuestionInterfac
 
     return $fields;
   }
+
 }

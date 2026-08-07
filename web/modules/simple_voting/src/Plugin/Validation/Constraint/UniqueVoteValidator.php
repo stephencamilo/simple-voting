@@ -5,8 +5,14 @@ namespace Drupal\simple_voting\Plugin\Validation\Constraint;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 
+/**
+ *
+ */
 class UniqueVoteValidator extends ConstraintValidator {
 
+  /**
+   *
+   */
   public function validate($entity, Constraint $constraint) {
     if (!isset($entity)) {
       return;
@@ -30,4 +36,5 @@ class UniqueVoteValidator extends ConstraintValidator {
       $this->context->addViolation($constraint->message);
     }
   }
+
 }

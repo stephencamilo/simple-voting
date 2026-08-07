@@ -11,12 +11,13 @@ use Symfony\Component\Validator\Constraint;
  * )
  */
 class UniqueVoteConstraint extends Constraint {
-    public $message = 'You have already voted on this question.';
+  public $message = 'You have already voted on this question.';
 
-    /**
-     * {@inheritdoc}
-     */
-    public function validatedBy(): string {
-        return '\Drupal\simple_voting\Plugin\Validation\Constraint\UniqueVoteValidator';
-    }
+  /**
+   * {@inheritdoc}
+   */
+  public function validatedBy(): string {
+    return '\Drupal\simple_voting\Plugin\Validation\Constraint\UniqueVoteValidator';
+  }
+
 }

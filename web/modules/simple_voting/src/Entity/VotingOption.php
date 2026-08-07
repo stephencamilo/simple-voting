@@ -22,46 +22,45 @@ use Drupal\views\EntityViewsData;
  * Defines the voting option entity class.
  */
 #[ContentEntityType(
-  id: 'voting_option',
-  label: new TranslatableMarkup('Voting option'),
-  label_collection: new TranslatableMarkup('Voting options'),
-  label_singular: new TranslatableMarkup('voting option'),
-  label_plural: new TranslatableMarkup('voting options'),
-  entity_keys: [
-    'id' => 'id',
-    'label' => 'label',
-    'uuid' => 'uuid',
-  ],
-  handlers: [
-    'list_builder' => VotingOptionListBuilder::class,
-    'views_data' => EntityViewsData::class,
-    'form' => [
-      'add' => VotingOptionForm::class,
-      'edit' => VotingOptionForm::class,
-      'delete' => ContentEntityDeleteForm::class,
-      'delete-multiple-confirm' => DeleteMultipleForm::class,
+    id: 'voting_option',
+    label: new TranslatableMarkup('Voting option'),
+    label_collection: new TranslatableMarkup('Voting options'),
+    label_singular: new TranslatableMarkup('voting option'),
+    label_plural: new TranslatableMarkup('voting options'),
+    entity_keys: [
+      'id' => 'id',
+      'label' => 'label',
+      'uuid' => 'uuid',
     ],
-    'route_provider' => [
-      'html' => VotingOptionHtmlRouteProvider::class,
+    handlers: [
+      'list_builder' => VotingOptionListBuilder::class,
+      'views_data' => EntityViewsData::class,
+      'form' => [
+        'add' => VotingOptionForm::class,
+        'edit' => VotingOptionForm::class,
+        'delete' => ContentEntityDeleteForm::class,
+        'delete-multiple-confirm' => DeleteMultipleForm::class,
+      ],
+      'route_provider' => [
+        'html' => VotingOptionHtmlRouteProvider::class,
+      ],
     ],
-  ],
-  links: [
-    'collection' => '/admin/content/voting-option',
-    'add-form' => '/voting-option/add',
-    'canonical' => '/voting-option/{voting_option}',
-    'edit-form' => '/voting-option/{voting_option}',
-    'delete-form' => '/voting-option/{voting_option}/delete',
-    'delete-multiple-form' => '/admin/content/voting-option/delete-multiple',
-  ],
-  admin_permission: 'administer voting',
-  base_table: 'voting_option',
-  label_count: [
-    'singular' => '@count voting options',
-    'plural' => '@count voting options',
-  ],
+    links: [
+      'collection' => '/admin/content/voting-option',
+      'add-form' => '/voting-option/add',
+      'canonical' => '/voting-option/{voting_option}',
+      'edit-form' => '/voting-option/{voting_option}',
+      'delete-form' => '/voting-option/{voting_option}/delete',
+      'delete-multiple-form' => '/admin/content/voting-option/delete-multiple',
+    ],
+    admin_permission: 'administer voting',
+    base_table: 'voting_option',
+    label_count: [
+      'singular' => '@count voting options',
+      'plural' => '@count voting options',
+    ],
 )]
 class VotingOption extends ContentEntityBase implements VotingOptionInterface {
-
   use EntityChangedTrait;
 
   /**
@@ -120,7 +119,7 @@ class VotingOption extends ContentEntityBase implements VotingOptionInterface {
       ->setLabel(t('Changed'))
       ->setDescription(t('The time that the voting option was last edited.'));
 
-    // Image field
+    // Image field.
     $fields['image'] = BaseFieldDefinition::create('image')
       ->setLabel(t('Image'))
       ->setSettings([
@@ -136,4 +135,5 @@ class VotingOption extends ContentEntityBase implements VotingOptionInterface {
 
     return $fields;
   }
+
 }

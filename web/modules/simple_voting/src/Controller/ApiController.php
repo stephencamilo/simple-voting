@@ -6,8 +6,14 @@ use Drupal\Core\Controller\ControllerBase;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ *
+ */
 class ApiController extends ControllerBase {
 
+  /**
+   *
+   */
   public function getQuestions() {
     $service = \Drupal::service('simple_voting.voting_service');
     $questions = $service->getQuestions();
@@ -21,6 +27,9 @@ class ApiController extends ControllerBase {
     return new JsonResponse($data);
   }
 
+  /**
+   *
+   */
   public function getQuestion($id) {
     $service = \Drupal::service('simple_voting.voting_service');
     $question = $service->getQuestion($id);
@@ -47,6 +56,9 @@ class ApiController extends ControllerBase {
     ]);
   }
 
+  /**
+   *
+   */
   public function castVote(Request $request, $id) {
     $user = \Drupal::currentUser();
     if ($user->isAnonymous()) {
@@ -68,11 +80,15 @@ class ApiController extends ControllerBase {
       $userEntity = \Drupal::entityTypeManager()->getStorage('user')->load($user->id());
       $service->castVote($question, $body['option_id'], $userEntity);
       return new JsonResponse(['message' => 'Vote cast successfully.'], 201);
-    } catch (\Exception $e) {
+    }
+    catch (\Exception $e) {
       return new JsonResponse(['error' => $e->getMessage()], 400);
     }
   }
 
+  /**
+   *
+   */
   public function getResults($id) {
     $service = \Drupal::service('simple_voting.voting_service');
     $question = $service->getQuestion($id);
@@ -91,4 +107,5 @@ class ApiController extends ControllerBase {
       'options' => $results,
     ]);
   }
+
 }

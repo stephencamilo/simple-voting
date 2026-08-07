@@ -11,5 +11,4 @@ use Drupal\Core\Entity\EntityChangedInterface;
  * Provides an interface defining a voting option entity type.
  */
 interface VotingOptionInterface extends ContentEntityInterface, EntityChangedInterface {
-
 }

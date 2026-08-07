@@ -4,9 +4,11 @@ namespace Drupal\simple_voting\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\simple_voting\Entity\VotingQuestion;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
+/**
+ *
+ */
 class VotingPageController extends ControllerBase {
 
   /**
@@ -18,7 +20,7 @@ class VotingPageController extends ControllerBase {
       throw new AccessDeniedHttpException('You must be logged in to vote.');
     }
 
-    // Check global voting setting
+    // Check global voting setting.
     $config = \Drupal::config('simple_voting.settings');
     if ($config->get('voting_disabled')) {
       return [
@@ -28,7 +30,7 @@ class VotingPageController extends ControllerBase {
 
     $service = \Drupal::service('simple_voting.voting_service');
 
-    // Check if user already voted
+    // Check if user already voted.
     $existing_votes = \Drupal::entityTypeManager()
       ->getStorage('voting_vote')
       ->loadByProperties([
@@ -37,14 +39,14 @@ class VotingPageController extends ControllerBase {
       ]);
 
     if (!empty($existing_votes)) {
-      // User already voted – show results if allowed
+      // User already voted – show results if allowed.
       if ($voting_question->get('show_results')->value) {
         $results = $service->getResults($voting_question);
         return [
           '#theme' => 'item_list',
           '#title' => $this->t('Results for @question', ['@question' => $voting_question->label()]),
-          '#items' => array_map(function($row) {
-            return $this->t('@title: @votes votes', ['@title' => $row['title'], '@votes' => $row['votes']]);
+          '#items' => array_map(function ($row) {
+              return $this->t('@title: @votes votes', ['@title' => $row['title'], '@votes' => $row['votes']]);
           }, $results),
         ];
       }
@@ -55,7 +57,7 @@ class VotingPageController extends ControllerBase {
       }
     }
 
-    // Build voting form
+    // Build voting form.
     $options = [];
     foreach ($voting_question->get('field_options')->referencedEntities() as $option) {
       $options[$option->id()] = $option->label();
@@ -68,11 +70,12 @@ class VotingPageController extends ControllerBase {
     }
 
     $form = \Drupal::formBuilder()->getForm(
-      'Drupal\simple_voting\Form\VoteForm',
-      $voting_question,
-      $options
-    );
+          'Drupal\simple_voting\Form\VoteForm',
+          $voting_question,
+          $options
+      );
 
     return $form;
   }
+
 }
