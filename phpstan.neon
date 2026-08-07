@@ -1,0 +1,13 @@
+parameters:
+  level: 2
+  paths:
+    - web/modules/simple_voting
+  excludePaths:
+    - web/modules/simple_voting/templates
+    - web/modules/simple_voting/src/Routing/*
+  ignoreErrors:
+    - '#Call to an undefined method Drupal\\Core\\Entity\\EntityInterface::set\(\)#'
+    - '#Call to an undefined method Drupal\\Core\\Entity\\EntityInterface::setOwnerId\(\)#'
+    - '#\\Drupal calls should be avoided in classes#'
+    - '#Access to an undefined property Symfony\\Component\\Validator\\Constraint::\$message#'
+    - '#Call to an undefined method Drupal\\Core\\Entity\\EntityInterface::isAuthenticated\(\)#'
