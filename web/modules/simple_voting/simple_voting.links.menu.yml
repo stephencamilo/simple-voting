@@ -1,0 +1,41 @@
+entity.voting_question.collection:
+  title: 'Voting questions'
+  description: 'List of voting questions.'
+  route_name: entity.voting_question.collection
+  parent: system.admin_content
+  weight: 0
+
+entity.voting_question.settings:
+  title: 'Voting question settings'
+  description: 'Configure Voting question entity type.'
+  route_name: entity.voting_question.settings
+  parent: system.admin_structure
+
+entity.voting_option.collection:
+  title: 'Voting options'
+  description: 'List of voting options.'
+  route_name: entity.voting_option.collection
+  parent: system.admin_content
+  weight: 1
+
+entity.voting_option.settings:
+  title: 'Voting option settings'
+  description: 'Configure Voting option entity type.'
+  route_name: entity.voting_option.settings
+  parent: system.admin_structure
+
+# Global voting settings (disable/enable)
+simple_voting.settings:
+  title: 'Simple voting settings'
+  description: 'Global voting configuration.'
+  route_name: simple_voting.settings
+  parent: system.admin_config_content
+  weight: 100
+
+simple_voting.voting_question.navigation:
+  title: 'Voting questions'
+  description: 'Manage voting questions'
+  route_name: entity.voting_question.collection
+  parent: navigation.content
+  weight: 0
+

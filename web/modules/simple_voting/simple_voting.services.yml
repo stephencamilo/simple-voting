@@ -1,0 +1,4 @@
+services:
+  simple_voting.voting_service:
+    class: Drupal\simple_voting\VotingService
+    arguments: ['@entity_type.manager', '@lock', '@logger.factory', '@config.factory']

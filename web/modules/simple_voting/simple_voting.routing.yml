@@ -1,0 +1,52 @@
+entity.voting_question.canonical:
+  path: '/voting/{voting_question}'
+  defaults:
+    _controller: '\Drupal\simple_voting\Controller\VotingPageController::viewQuestion'
+    _title: 'Vote'
+  requirements:
+    _entity_access: 'voting_question.view'
+    _user_is_logged_in: 'TRUE'
+  options:
+    parameters:
+      voting_question:
+        type: entity:voting_question
+
+simple_voting.api.questions:
+  path: '/api/voting/questions'
+  defaults:
+    _controller: '\Drupal\simple_voting\Controller\ApiController::getQuestions'
+  methods: [GET]
+  requirements:
+    _permission: 'vote on questions'
+  options:
+    _auth: ['basic_auth']
+
+simple_voting.api.question:
+  path: '/api/voting/question/{id}'
+  defaults:
+    _controller: '\Drupal\simple_voting\Controller\ApiController::getQuestion'
+  methods: [GET]
+  requirements:
+    _permission: 'vote on questions'
+  options:
+    _auth: ['basic_auth']
+
+simple_voting.api.vote:
+  path: '/api/voting/question/{id}/vote'
+  defaults:
+    _controller: '\Drupal\simple_voting\Controller\ApiController::castVote'
+  methods: [POST]
+  requirements:
+    _permission: 'vote on questions'
+  options:
+    _auth: ['basic_auth']
+
+simple_voting.api.results:
+  path: '/api/voting/question/{id}/results'
+  defaults:
+    _controller: '\Drupal\simple_voting\Controller\ApiController::getResults'
+  methods: [GET]
+  requirements:
+    _permission: 'vote on questions'
+  options:
+    _auth: ['basic_auth']

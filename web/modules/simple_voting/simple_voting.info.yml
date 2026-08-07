@@ -1,0 +1,10 @@
+name: 'Simple Voting'
+type: module
+description: 'Custom voting system with entities and API.'
+package: Custom
+core_version_requirement: ^10 || ^11
+dependencies:
+  - drupal:rest
+  - drupal:user
+  - drupal:image
+  - inline_entity_form

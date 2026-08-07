@@ -1,0 +1,40 @@
+# Composer dependencies
+/vendor
+
+# Drupal core (managed by Composer)
+/web/core
+
+# Contributed modules and themes (managed by Composer)
+/web/modules/contrib
+/web/themes/contrib
+
+# Site-specific files (user-uploaded files, private settings)
+/web/sites/*/files
+/web/sites/*/settings*.php
+/web/sites/*/services*.yml
+# Keep example/development files, they are safe
+!web/sites/*/example.settings.local.php
+!web/sites/*/development.services.yml
+!web/sites/*/example.sites.php
+
+# Environment / IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Lando generated files (optional – but ignore local overrides)
+# .lando.local.yml
+
+# Environment variables (if any)
+.env
+
+# But keep our deliverables and custom module explicitly safe
+!README.md
+!Simple_Voting_API.postman_collection.json
+!drupal_dump.sql
+!web/modules/simple_voting

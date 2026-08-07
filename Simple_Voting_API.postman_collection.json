@@ -1,0 +1,100 @@
+{
+  "info": {
+    "name": "Simple Voting API",
+    "description": "Collection for the Simple Voting module. Requires Basic Auth with a user that has the 'vote on questions' permission.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "basic",
+    "basic": [
+      { "key": "username", "value": "{{username}}", "type": "string" },
+      { "key": "password", "value": "{{password}}", "type": "string" }
+    ]
+  },
+  "item": [
+    {
+      "name": "Get Questions",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/voting/questions",
+          "host": ["{{base_url}}"],
+          "path": ["api", "voting", "questions"]
+        }
+      }
+    },
+    {
+      "name": "Get Single Question",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/voting/question/{{question_id}}",
+          "host": ["{{base_url}}"],
+          "path": ["api", "voting", "question", "{{question_id}}"]
+        }
+      }
+    },
+    {
+      "name": "Cast Vote",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"option_id\": {{option_id}}\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/voting/question/{{question_id}}/vote",
+          "host": ["{{base_url}}"],
+          "path": ["api", "voting", "question", "{{question_id}}", "vote"]
+        }
+      }
+    },
+    {
+      "name": "Get Results",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/voting/question/{{question_id}}/results",
+          "host": ["{{base_url}}"],
+          "path": ["api", "voting", "question", "{{question_id}}", "results"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://simple-voting.lndo.site",
+      "type": "string"
+    },
+    {
+      "key": "username",
+      "value": "admin",
+      "type": "string"
+    },
+    {
+      "key": "password",
+      "value": "admin",
+      "type": "string"
+    },
+    {
+      "key": "question_id",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "option_id",
+      "value": "1",
+      "type": "string"
+    }
+  ]
+}

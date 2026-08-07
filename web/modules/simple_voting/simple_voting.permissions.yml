@@ -1,0 +1,8 @@
+administer voting:
+  title: 'Administer voting settings and entities'
+  description: 'Manage voting configuration, settings, and related entities.'
+  restrict access: true
+
+vote on questions:
+  title: 'Vote on questions'
+  description: 'Cast votes on questions.'
